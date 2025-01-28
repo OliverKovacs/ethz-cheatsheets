@@ -40,9 +40,9 @@
     Then
     \begin{enumerate}
         \item \(v \cdot w = w \cdot v\);
-        \item \((\lambda v) \cdot w = \lambda(v \codt w) = v \cdot (\lambda w)\);
+        \item \((\lambda v) \cdot w = \lambda(v \cdot w) = v \cdot (\lambda w)\);
         \item \(u \cdot (v + w) = u \cdot v + u \cdot w\) and 
-            \((u + v) \cdot w = u \cdotwv + v \cdot w\);
+            \((u + v) \cdot w = u \cdot v + v \cdot w\);
         \item \(v \cdot v \ge 0\), equality iff \(v = \mathbf 0\).
     \end{enumerate}
 
@@ -231,15 +231,15 @@
     Then
     \begin{enumerate}
         \item \(\Ker(T) := \{x \in \mathbb R^n : T(x) = \mathbf 0\} \subseteq \mathbb R^n\),
-        \item \(\Im(T) := \{T(x) : x \in \mathbb R^n\} \subseteq \mathbb R^m\).
+        \item \(\Img(T) := \{T(x) : x \in \mathbb R^n\} \subseteq \mathbb R^m\).
     \end{enumerate}
 
     O2.32:
     Let \(T: \mathbb R^n \to \mathbb R^m\) be a linear transformation and
-    \(A \in A^{m \times n}\) such that \(T = T_A\).
-    Then \(\Im(T) = C(A)\).
+    \(A \in \mathbb R^{m \times n}\) such that \(T = T_A\).
+    Then \(\Img(T) = C(A)\).
     
-    \section{Solving Linear Equations}
+    \section{Solving linear equations}
 
     \subsection{Systems of linear equations}
 
@@ -253,6 +253,7 @@
 
     \subsection{Gauss elimination}
 
+    A:
     Let \(A \in \mathbb R^{m \times m}\), \(b \in \mathbb R^m\). Then
 
     \begin{algorithmic}
@@ -297,7 +298,7 @@
     T3.6:
     Gauss elimination is in \(O(m^3)\).
 
-    \subsection{Inverse Matrices}
+    \subsection{Inverse matrices}
 
     D3.7:
     Let \(M \in \mathbb R^{m \times m}\). \(M\) is called \textit{invertible}
@@ -372,7 +373,7 @@
     matrix with 1s on the diagonal and \(U\) an upper triangular matrix with nonzero
     diagonal entries.
 
-    R: (Solving \(Ax = b\) from \(PA = LU\)):
+    R (Solving \(Ax = b\) from \(PA = LU\)):
     Because \(P^{-1} = P^\top\) we have
     \(P^\top LUx = b\). Solve \(P^\top z = b\) for \(z\) be permutation.
     Solve \(Ly = z\) for \(y\) using forward substitution and \(Ux = y\) for \(x\)
@@ -437,7 +438,7 @@
     (if there are any); in particular \(R\) is in \(\RREF(j_1, \ldots, j_r)\),
     and \(C\) is the submatrix of \(A\) with columns \(j_1, \ldots, j_r\).
 
-    \section{The Four Fundamental Subspaces}
+    \section{The four fundamental subspaces}
 
     \subsection{Vector spaces}
 
@@ -467,7 +468,7 @@
     D4.3:
     A \textit{polynomial} \(p\) is a sum of the form
     \(p = \sum_{i=0}^m p_i x^i\) for some \(m \in \mathbb N\).
-    \(x\) is a variable and \(p_0, \ldots, p_m \in \mathbb R\) are
+    \(x\) is a \textit{variable} and \(p_0, \ldots, p_m \in \mathbb R\) are
     \textit{coefficients} of \(p\). The largest \(i\) such that
     \(p_i \neq 0\) is the \textit{degree} of \(p\).
     The zero polynomial \(\mathbf 0 = 0\) has degree -1.
@@ -564,7 +565,7 @@
 
     \subsection{Computing the fundamental subspaces}
     
-    \subsubsection{Compute basis of \(C(A)\) and \(R(A)\)}
+    \subsubsection{Computing a basis of \(C(A)\) and \(R(A)\)}
 
     T4.25/T4.28:
     Let \(A \in \mathbb R^{m \times n}\) and \(R_0\) in
@@ -725,7 +726,7 @@
         \item \((I - P)^2 = I - P\).
     \end{enumerate}
 
-    \subsection{Least Squares Approximation}
+    \subsection{Least squares approximation}
 
     (2):
     \(\min_{\hat x \in \mathbb R^n}\|A \hat x - b\|^2\).
@@ -738,7 +739,7 @@
     When \(A\) has independent columns the unique solution \(\hat x\)
     of (2) is given by \(\hat x = (A^\top A)^{-1} A^\top b\).
 
-    \subsubsection{Linear Regression}
+    \subsubsection{Linear regression}
     Problem: Consider data points \((t_1, b_1), \ldots, (t_m, b_m)\).
     Find \(\alpha_0, \alpha_1 \in \mathbb R\) such that
     \(b_k \approx \alpha_0 + \alpha_1 t_k\).
@@ -789,7 +790,7 @@
     \end{bmatrix} \ .
     \]
 
-    \subsection{Orthonormal Bases, Gram Schmidt}
+    \subsection{Orthonormal bases, Gram-Schmidt}
 
     D5.4.1:
     Vectors \(q_1, \ldots, q_n \in \mathbb R^m\) are \textit{orthonormal} iff
@@ -799,7 +800,7 @@
     In this case for \(Q\) with columns \(q_i\) we have \(Q^\top Q = I\).
     
     D5.4.3:
-    \(Q \in \mathbb R^{m \times m}\) is orthogonal iff \(Q^\top Q = I\).
+    \(Q \in \mathbb R^{n \times n}\) is orthogonal iff \(Q^\top Q = I\).
     In this case  \(QQ^\top = I, Q^{-1} = Q^\top\) and the columns form
     an orthonormal basis for \(\mathbb R^n\).
 
@@ -813,7 +814,7 @@
     be an orthonormal basis for \(S\).
     Let \(Q \in \mathbb R^{m \times n}\) with columns \(q_i\).
     Then the projection matrix that projects onto \(S\) is \(QQ^\top\)
-    and the Least Squares solution to \(Qx = b\) is \(\hat x = Q^\top b\).
+    and the Least squares solution to \(Qx = b\) is \(\hat x = Q^\top b\).
 
     \subsubsection{Gram-Schmidt process}
 
@@ -854,7 +855,7 @@
 
     D5.5.1:
     Let \(A \in \mathbb R^{m \times n}, \rank(A) = n\).
-    Then the \textit{pseudo-inverse} \(A^+ \in \mathbb R^{n \times m}\)
+    Then the \textit{pseudoinverse} \(A^+ \in \mathbb R^{n \times m}\)
     of \(A\) is \(A^+ = (A^\top A)^{-1} A^\top\).
 
     P5.5.2:
@@ -910,7 +911,7 @@
     Let \(A \in \mathbb R^{m \times n}\).
     Then \(f : C(A^\top) \to C(A)\), \(f : x \mapsto Ax\) is a bijection.
 
-    \subsection{Farkas lemma}
+    \subsection{Farkas' lemma}
     
     D5.6.1:
     Let \(A \in \mathbb Q^{m \times n}\), \(b \in \mathbb Q^m\) and
@@ -987,7 +988,7 @@
     T5.6.6:
     \(\proj_{S_{n-i}}(P) = P^{(i)}\).
 
-    \subsubsection{Farkas Lemma}
+    \subsubsection{Farkas' lemma}
 
     T5.6.7:
     Let \(A \in \mathbb Q^{m \times n}\), \(b \in \mathbb Q^m\).
@@ -1115,8 +1116,8 @@
     \begin{itemize}
         \item \(\mathfrak R(a + ib) := a\)
         \item \(\mathfrak I(a + ib) := b\)
-        \item \(|z| := \sqrt{a^2 + b^2}\) (modulus)
-        \item \(\overline{a + ib} := a - ib\) (complex conjugate)
+        \item \(|z| := \sqrt{a^2 + b^2}\) (\textit{modulus})
+        \item \(\overline{a + ib} := a - ib\) (\textit{complex conjugate})
     \end{itemize}
 
     F7.0.1:
@@ -1128,7 +1129,7 @@
     \(z = re^{i \theta}\) where \(r \ge 0\) is the \textit{modulus}
     and \(\theta \in \mathbb R\) is the \textit{argument}.
 
-    T7.0.3 (Fundamental Theorem of Algebra):
+    T7.0.3 (Fundamental theorem of algebra):
     Any degree \(n\) non-constant polynomial
     \(P(z) = \alpha_n z^n + \cdots + \alpha_1 z + \alpha_0\)
     with \(\alpha_n \neq 0\) has a zero: \(\lambda \in \mathbb C\)
@@ -1191,8 +1192,8 @@
 
     D7.1.1:
     Let \(A \in \mathbb R^{n \times n}\).
-    Then \(\lambda \in \mathbb C\) is an \textit{Eigenvalue (EW)} and
-    \(v \in \mathbb C^n \setminus \{0\}\) is an \textit{Eigenvector (EV)} of \(A\)
+    Then \(\lambda \in \mathbb C\) is an \textit{eigenvalue (EW)} and
+    \(v \in \mathbb C^n \setminus \{0\}\) is an \textit{eigenvector (EV)} of \(A\)
     iff \(A v = \lambda v\).
 
     P7.1.2:
@@ -1241,7 +1242,7 @@
     Let \(A \in \mathbb R^{n \times n}\).
     The \textit{trace} of \(A\) is \(\Tr(A) := \sum_{i = 1}^n A_{ii}\).
 
-    (33) (Characteristic Polynomial of \(A\)):
+    (33) (Characteristic polynomial of \(A\)):
     \((-1)^n \det(A - zI) = \det(zI - A) =
         (z - \lambda_1) \cdots (z - \lambda_n)\)
 
@@ -1269,7 +1270,7 @@
             \(A\) and \(B\)!
         \item The EWs of \(A \cdot B\) are not easily computed from the EWs of
             \(A\) and \(B\)!
-        \item Gaussian Elimination does not preserve EWs or EVs!
+        \item Gauss elimination does not preserve EWs or EVs!
             The EWs are not the diagonal elements of \(U\) in the \(PA = LU\)
             factorization.
     \end{enumerate}
@@ -1285,13 +1286,13 @@
     set of real EVs.
 
     P7.1.21:
-    Let \(P\) be a projections matrix. Then \(P\) has at most two EWs, 0 and 1,
+    Let \(P\) be a projection matrix. Then \(P\) has at most two EWs, 0 and 1,
     and a complete set of real EVs.
 
     D7.1.22:
     Let \(A \in \mathbb R^{n \times n}\) and \(\lambda\) an EW of \(A\).
     Then we call the dimension of \(N(A - \lambda I)\) the
-    geometric multiplicity of \(\lambda\).
+    \textit{geometric multiplicity} of \(\lambda\).
     
     \subsection{Diagonalizing and change of basis}
 
@@ -1338,7 +1339,7 @@
     the eigenvalues of \(A\) on its diagonal.
 
     R7.3.3: The decomposition in [C7.3.2] and [T7.2.1] is called
-    \textit{Eigendecomposition}.
+    \textit{eigendecomposition}.
 
     C7.3.4:
     The rank of a real symmetric matrix \(A\) is the number of non-zero
@@ -1367,11 +1368,11 @@
     Every symmetric matrix \(A \in \mathbb R^{n \times n}\) has a
     real EW \(\lambda\).
 
-    \subsubsection{Rayleigh Quotient}
+    \subsubsection{Rayleigh quotient}
 
     P7.3.10:
     Let \(A \in \mathbb R^{n \times n}\).
-    Then the \textit{Rayleigh Quotient} is defined for
+    Then the \textit{Rayleigh quotient} defined for
     \(x \in \mathbb R^n \setminus \{0\}\) as
     \(R(x) := \frac{x \top A x}{x \top x}\)
     attains its maximum at \(R(v_{\max}) = \lambda_{\max}\)
@@ -1383,9 +1384,9 @@
 
     D7.3.11:
     \(A \in \mathbb R^{n \times n}\) is said to be
-    \textit{Positive Semidefinite (PSD)}
-    (\textit{Positive Definite (PD)}) iff all its EWs are
-    non-negative (strictly possitive).
+    \textit{positive semidefinite (PSD)}
+    (\textit{positive definite (PD)}) iff all its EWs are
+    non-negative (strictly positive).
 
     P7.3.12:
     Let \(A \in \mathbb R^{n \times n}\) be symmetric.
@@ -1406,7 +1407,7 @@
     R7.3.15:
     Let \(A \in \mathbb R^{m \times n}\).
     As an abuse of notation we also call \(AA^\top\) a Gram matrix of \(A\).
-    If \(a_1, \ldotsm, a_n \in \mathbb R^m\) are the columns of \(A\) then
+    If \(a_1, \ldots, a_n \in \mathbb R^m\) are the columns of \(A\) then
     \(AA^\top \in \mathbb R^{m \times m}\) and
     \(AA^\top = \sum_{i=1}^n a_i a_i^\top\).
 
@@ -1422,7 +1423,7 @@
     Every symmetric PSD matrix \(M\) is a gram matrix of an upper triangular
     matrix \(C\). \(M = C^\top C\) is known as the \textit{Cholesky decomposition}.
     
-    \section{Singular Value Decomposition}
+    \section{Singular value decomposition}
 
     \subsection{Singular value decomposition (SVD)}
 
@@ -1435,9 +1436,9 @@
     ordered in descending order.
     The columns \(u_1, \ldots, u_m\) (\(v_1, \ldots, v_n\)) of
     \(U\) (\(V\)) are called the
-    left (right) singular vectors of \(A\) and are orthonormal.
+    \textit{left} (\textit{right}) \textit{singular vectors} of \(A\) and are orthonormal.
     The diagonal elements of \(\Sigma\), \(\sigma_i = \Sigma_{ii}\)
-    are called the singular values of \(A\) and are ordered as
+    are called the \textit{singular values} of \(A\) and are ordered as
     \(\sigma_1 \ge \cdots \ge \sigma_{\min \{m, n\}}\).
 
     R8.1.2:
@@ -1521,7 +1522,11 @@
     D:
     A function is \textit{bijective} iff it is invertible.
 
-    D (Kronecker Delta):
+    D:
+    Let \(V\) be a vector space.
+    Then \(V^\bot\) denotes the orthogonal complement of \(V\).
+
+    D (Kronecker delta):
 
     \[
         \delta_{ij} := \begin{cases}
@@ -1544,27 +1549,27 @@
     \subsection{Symbols}
 
     \begin{center}
-    \begin{tabular}{|l|l|}
-        \hline
-        A & Algorithm \\
-        \hline
-        C & Corollary \\
-        \hline
-        D & Definition \\
-        \hline
-        F & Fact \\
-        \hline
-        L & Lemma \\
-        \hline
-        O & Observation \\
-        \hline
-        P & Proposition \\
-        \hline
-        R & Remark \\
-        \hline
-        T & Theorem \\
-        \hline
-    \end{tabular}
+        \begin{tabular}{|l|l|}
+            \hline
+            A & Algorithm \\
+            \hline
+            C & Corollary \\
+            \hline
+            D & Definition \\
+            \hline
+            F & Fact \\
+            \hline
+            L & Lemma \\
+            \hline
+            O & Observation \\
+            \hline
+            P & Proposition \\
+            \hline
+            R & Remark \\
+            \hline
+            T & Theorem \\
+            \hline
+        \end{tabular}
     \end{center}
 
     % further layouts
@@ -1577,19 +1582,6 @@
     % \begin{minipage}{0.49\linewidth}
     %    Right
     % \end{minipage}
-
-    % \section{Table Example}
-    % \begin{tabularx}{\linewidth}{|X|X|X|}
-    %     \hline
-    %     \textbf{Header 1} & \textbf{Header 2} & \textbf{Header 3} \\
-    %     \hline
-    %     Row 1, Col 1 & Row 1, Col 2 & Row 1, Col 3 \\
-    %     \hline
-    %     Row 2, Col 1 & Row 2, Col 2 & Row 2, Col 3 \\
-    %     \hline
-    %     Row 3, Col 1 & Row 3, Col 2 & Row 3, Col 3 \\
-    %     \hline
-    % \end{tabularx}
 
     % \section{Boxed Equation}
     % % Boxed equation with a simple math expression
